@@ -18,11 +18,16 @@ struct FStageStruct: public FTableRowBase
 	GENERATED_BODY()
 
 	//コンストラクト
-	FStageStruct(): StageLevel(nullptr)
+	FStageStruct(): StageLevel(nullptr), StageImage(nullptr)
 	{
 	}
 
-	FStageStruct(TSoftObjectPtr<UWorld> InStageLevel, FSlateBrush InIconImage): StageLevel(InStageLevel), StageImage(InIconImage){}
+	FStageStruct(FText StageName,TSoftObjectPtr<UWorld> InStageLevel, UTexture2D* InIconImage):
+	StageName(StageName), StageLevel(InStageLevel), StageImage(InIconImage){}
+	
+	// ステージ名
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FText StageName;
 	
 	// ステージ用のレベル
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -30,7 +35,7 @@ struct FStageStruct: public FTableRowBase
 
 	// ステージ用の画像
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FSlateBrush StageImage;
+	UTexture2D* StageImage;
 };
 
 UCLASS()
@@ -43,7 +48,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Data Setting")
 	TArray<FStageStruct> StageData;
 
-	// データ取り込み用ファンクション
+	/* データ取り込み用ファンクション
 	UFUNCTION(CallInEditor)
 	void LoadData();
+	*/
+	int32 GetStageDataNum() const;
 };

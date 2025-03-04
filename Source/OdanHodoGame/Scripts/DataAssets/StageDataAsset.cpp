@@ -3,7 +3,7 @@
 
 #include "StageDataAsset.h"
 
-void UStageDataAsset::LoadData()
+int32 UStageDataAsset::GetStageDataNum() const
 {
-	return;
+	return StageData.Num();
 }
