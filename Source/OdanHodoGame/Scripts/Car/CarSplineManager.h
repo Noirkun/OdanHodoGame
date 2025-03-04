@@ -71,8 +71,6 @@ private:
 	//スポーンしたNiagaraComponentを格納する配列
 	UPROPERTY(VisibleAnywhere,EditFixedSize,Category = "Effect")
 	TArray<UNiagaraComponent*> NiagaraComponentArray;
-
-
 	
 	//車を生成
 	UFUNCTION()
