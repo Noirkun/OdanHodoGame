@@ -83,8 +83,10 @@ void ACarSplineManager::BeginPlay()
 		//タイマーの生成
 		GameMode->GetWorld()->GetTimerManager().SetTimer(CarSplineInfoList[i].TimerHandle,[this,i]()
 			{
-				//ラムダ式でSpawnCarを呼び出し
-				SpawnCar(CarSplineInfoList[i].CarColor,CarSplineInfoList[i].SplineComponent);
+
+			//ラムダ式でSpawnCarを呼び出し
+SpawnCar(CarSplineInfoList[i].CarColor,CarSplineInfoList[i].SplineComponent);
+
 			},CarSplineInfoList[i].CarSpawnTime,true);
 	}
 }
@@ -130,6 +132,7 @@ void ACarSplineManager::SpawnCar(ECarColor _CarColor, ACarSpline* _SplineCompone
 		UE_LOG(LogTemp, Error, TEXT("ACarSplineManager::SpawnCar - ABaseCarクラスがありません"));
 		return;
 	}
+	
 	//車の生成
 	FTransform SplineTransform = _SplineComponent->GetActorTransform();
 	TObjectPtr<AActor> SpawnActor = GameMode->GetWorld()->SpawnActor(ABaseCar::StaticClass(), &SplineTransform);
@@ -138,18 +141,16 @@ void ACarSplineManager::SpawnCar(ECarColor _CarColor, ACarSpline* _SplineCompone
 		UE_LOG(LogTemp, Error, TEXT("ACarSplineManager::SpawnCar - 車が生成できませんでした"));
 		return;
 	}
-
+	//生成した車がABaseCarクラスかどうかをチェック
 	TObjectPtr<ABaseCar> CarActor = Cast<ABaseCar>(SpawnActor);
 	if (!CarActor)
 	{
 		UE_LOG(LogTemp, Error, TEXT("ACarSplineManager::SpawnCar - 車がABaseCarクラスではありません"));
 		return;
 	}
-
-	//TObjectPtr<AActor> SpawnActor = GetWorld() -> SpawnActor(ABaseCar::StaticClass(), &_SplineComponent -> GetActorTransform());
-	//TObjectPtr<ABaseCar> CarActor = Cast<ABaseCar>(SpawnActor);
 	//車のInit関数を呼び出し
 	CarActor->Init(_CarColor, _SplineComponent->SplineComponent);
+
 }
 
 void ACarSplineManager::OnHitEvent()

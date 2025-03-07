@@ -58,5 +58,11 @@ public:
 	//時間
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameIns")
 	float Time = 0.0f;
-	
+
+	//現在プレイしているマップ
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Level)
+	TSoftObjectPtr<UWorld> PlayStageLevel;
+
+	//プレイしているマップをセットする関数
+	void SetPlayStageLevel(const TSoftObjectPtr<UWorld>& InStageLevel){ PlayStageLevel = InStageLevel; }
 };

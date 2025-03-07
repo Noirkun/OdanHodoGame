@@ -3,10 +3,13 @@
 
 #include "StageSelectWidget.h"
 #include "Components/TextBlock.h"
+#include "OdanHodoGame/Scripts/GameIns.h"
 
 void UStageSelectWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+	//ゲームインスタンスを取得
+	GameIns = UGameIns::GetGameInstance();
 	//ステージデータの数だけループ
 	for (auto StageData : StageDataAsset->StageData)
 	{
@@ -21,6 +24,8 @@ void UStageSelectWidget::NativeConstruct()
 
 	//ステージの名前を表示するWidgetにステージの名前を入れる
 	TitleText->SetText(ForceStageName);
+	//ステージのレベルをゲームインスタンスに設定
+	GameIns->SetPlayStageLevel(ForceStageLevel);
 	
 }
 
@@ -59,6 +64,8 @@ void UStageSelectWidget::NextListWidget()
 		ForceStageName=StageDataAsset->StageData[ForceIndex].StageName;
 		//選ばれているステージのレベルをステージデータのレベルにする
 		ForceStageLevel=StageDataAsset->StageData[ForceIndex].StageLevel;
+		//ゲームインスタンスにステージのレベルを設定
+		GameIns->SetPlayStageLevel(ForceStageLevel);
 	}
 	else
 	{
@@ -66,6 +73,8 @@ void UStageSelectWidget::NextListWidget()
 		ForceStageName=StageDataAsset->StageData[ForceIndex].StageName;
 		//選ばれているステージのレベルをステージデータのレベルにする
 		ForceStageLevel=StageDataAsset->StageData[ForceIndex].StageLevel;
+		//ゲームインスタンスにステージのレベルを設定
+		GameIns->SetPlayStageLevel(ForceStageLevel);
 	}
 }
 
@@ -87,6 +96,8 @@ void UStageSelectWidget::PrevListWidget()
 		ForceStageName=StageDataAsset->StageData[ForceIndex].StageName;
 		//選ばれているステージのレベルをステージデータのレベルにする
 		ForceStageLevel=StageDataAsset->StageData[ForceIndex].StageLevel;
+		//ゲームインスタンスにステージのレベルを設定
+		GameIns->SetPlayStageLevel(ForceStageLevel);
 	}
 	else
 	{
@@ -94,6 +105,8 @@ void UStageSelectWidget::PrevListWidget()
 		ForceStageName=StageDataAsset->StageData[ForceIndex].StageName;
 		//選ばれているステージのレベルをステージデータのレベルにする
 		ForceStageLevel=StageDataAsset->StageData[ForceIndex].StageLevel;
+		//ゲームインスタンスにステージのレベルを設定
+		GameIns->SetPlayStageLevel(ForceStageLevel);
 	}
 }
 

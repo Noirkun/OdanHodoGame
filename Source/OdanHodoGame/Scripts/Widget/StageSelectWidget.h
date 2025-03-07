@@ -7,6 +7,7 @@
 #include "OdanHodoGame/Scripts/DataAssets/StageDataAsset.h"
 #include "StageSelectWidget.generated.h"
 
+class UGameIns;
 class UTextBlock;
 /**
  * ステージ選択用のWidgetクラス
@@ -45,6 +46,10 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Data Setting")
 	UStageDataAsset* StageDataAsset = nullptr;
 
+	//ゲームインスタンス
+	UPROPERTY()
+	UGameIns* GameIns = nullptr;
+	
 	//ステージデータの数
 	int32 StageDataNum = 0;
 	

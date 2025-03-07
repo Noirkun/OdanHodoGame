@@ -82,4 +82,7 @@ private:
 	
 	//スプラインの全てのポイントの位置を取得する関数
 	TArray<FVector> GetSplinePointLocations(USplineComponent* SplineComponent);
+
+	// イベント
+	FGraphEventRef		GraphEventRef;
 };
