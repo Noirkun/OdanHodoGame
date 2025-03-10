@@ -13,7 +13,11 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <list default="true" id="122ab23d-77b3-4e07-9323-926ef57de919" name="変更" comment="" />
+=======
+    <list default="true" id="f6725951-87a6-49e0-926c-4389b204eae8" name="変更" comment="" />
+>>>>>>> Stashed changes
 =======
     <list default="true" id="f6725951-87a6-49e0-926c-4389b204eae8" name="変更" comment="" />
 >>>>>>> Stashed changes
@@ -31,6 +35,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "node.js.selected.package.tslint": "(autodetect)"
@@ -41,6 +46,8 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -646,6 +653,9 @@
   </component>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
