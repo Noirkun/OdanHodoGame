@@ -71,8 +71,6 @@ private:
 	//スポーンしたNiagaraComponentを格納する配列
 	UPROPERTY(VisibleAnywhere,EditFixedSize,Category = "Effect")
 	TArray<UNiagaraComponent*> NiagaraComponentArray;
-
-
 	
 	//車を生成
 	UFUNCTION()
@@ -84,4 +82,7 @@ private:
 	
 	//スプラインの全てのポイントの位置を取得する関数
 	TArray<FVector> GetSplinePointLocations(USplineComponent* SplineComponent);
+
+	// イベント
+	FGraphEventRef		GraphEventRef;
 };

@@ -20,8 +20,6 @@ void AInputPlayerController::BeginPlay()
 	Super::BeginPlay();
 }
 
-
-
 void AInputPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
