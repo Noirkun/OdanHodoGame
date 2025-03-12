@@ -55,13 +55,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GameIns")
 	ECarColor SelectPlayerCarColor = ECarColor::ECC_Blue;
 
-	//時間
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameIns")
-	float Time = 0.0f;
-
 	//現在プレイしているマップ
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Level)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Level")
 	TSoftObjectPtr<UWorld> PlayStageLevel;
+
+	//MasterVolume・BGMVolume・SEVolumeを保存する変数
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	float MasterVolume = 1.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	float BGMVolume = 1.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	float SEVolume = 1.0f;
 
 	//プレイしているマップをセットする関数
 	void SetPlayStageLevel(const TSoftObjectPtr<UWorld>& InStageLevel){ PlayStageLevel = InStageLevel; }
