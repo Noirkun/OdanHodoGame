@@ -11,7 +11,7 @@
 
 
 class UNiagaraComponent;
-//class UNiagaraSystem;
+
 // 車の生成で使う情報
 USTRUCT(BlueprintType)
 struct FCarSplineInfo
@@ -58,7 +58,7 @@ private:
 	bool bIsBaseCarClass = false;
 	//デフォルト以外のスポーンさせるBaseCarを継承したBP
 	UPROPERTY(EditAnywhere, meta = (EditCondition = "bIsBaseCarClass"),Category = "Car")
-	TSoftClassPtr<ABaseCar> CustomBaseCarClass;
+	TSubclassOf<ABaseCar> CustomBaseCarClass;
 
 	//スプラインに沿うNiagara
 	UPROPERTY(EditDefaultsOnly,Category = "Car")

@@ -99,7 +99,7 @@ void ACarSplineManager::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	{
 		if (!NiagaraComponentArray.IsValidIndex(i))
 		{
-			UE_LOG(LogTemp, Error, TEXT("CarSplineManager.cpp::NiagaraComponentArrayのIndexが不正です。"));
+			UE_LOG(LogTemp, Error, TEXT("CarSplineManager.cpp::NiagaraComponentArrayのIndexがないものを指定しています。"));
 			return;
 		}
 		NiagaraComponentArray[i]->DestroyComponent();
@@ -135,7 +135,33 @@ void ACarSplineManager::SpawnCar(ECarColor _CarColor, ACarSpline* _SplineCompone
 	
 	//車の生成
 	FTransform SplineTransform = _SplineComponent->GetActorTransform();
-	TObjectPtr<AActor> SpawnActor = GameMode->GetWorld()->SpawnActor(ABaseCar::StaticClass(), &SplineTransform);
+	TObjectPtr<AActor> SpawnActor;
+	//自分で選択したクラスを使うかどうか
+	if(bIsBaseCarClass)
+	{
+		//CustomBaseCarClassがあるかどうかをチェック
+		if(CustomBaseCarClass)
+		{
+			//CustomBaseCarClassを使って車を生成
+			SpawnActor = GameMode->GetWorld()->SpawnActor(CustomBaseCarClass, &SplineTransform);
+		}
+		//CustomBaseCarClassがない場合
+		else
+		{
+			//ABaseCarクラスを使って車を生成
+			SpawnActor = GameMode->GetWorld()->SpawnActor(ABaseCar::StaticClass(), &SplineTransform);
+			UE_LOG(LogTemp, Error, TEXT("ACarSplineManager::SpawnCar - CustomBaseCarClassがないのでABaseCarクラスを使いスポーンしました"));
+			return;
+		}
+	}
+	//自分で選択したクラスを使わない場合
+	else
+	{
+		//ABaseCarクラスを使って車を生成
+		SpawnActor = GameMode->GetWorld()->SpawnActor(ABaseCar::StaticClass(), &SplineTransform);
+	}
+
+	//生成に失敗した場合はエラーログを出力
 	if (!SpawnActor)
 	{
 		UE_LOG(LogTemp, Error, TEXT("ACarSplineManager::SpawnCar - 車が生成できませんでした"));

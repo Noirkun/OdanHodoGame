@@ -36,13 +36,11 @@ void AInGameGameMode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//GetWorld()->IsPaused()でゲームが一時停止しているかどうかを確認
-	UE_LOG(LogTemp,Warning,TEXT("GetWorld()->IsPaused():%d"),GetWorld()->IsPaused());
-	
 	//ゲームが終了していない場合,ゲームが一時停止していない場合
 	if (!bGameEnd && !UGameplayStatics::IsGamePaused(GetWorld()))
 	{
-		UE_LOG(LogTemp,Warning,TEXT("GameMode::Tick"));
+		UE_LOG(LogTemp,Warning,TEXT("InGameGameMode::Tick"));
+		//ゲーム経過時間を更新
 		UpdateGameTime();
 	}
 }
