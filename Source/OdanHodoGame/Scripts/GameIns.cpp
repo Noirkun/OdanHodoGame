@@ -29,9 +29,9 @@ void UGameIns::SetBlueCarSpeed(float Speed)
 		BlueCarSpeed = Speed;
 	}
 	//0より小さい場合は0にする
-	if(BlueCarSpeed+Speed < 0.0f)
+	if(BlueCarSpeed+Speed < BlueCarMinSpeed)
 	{
-		BlueCarSpeed = 0.0f;
+		BlueCarSpeed = BlueCarMinSpeed;
 	}
 }
 
@@ -47,9 +47,9 @@ void UGameIns::SetRedCarSpeed(float Speed)
 		RedCarSpeed = Speed;
 	}
 	//0より小さい場合は0にする
-	if(BlueCarSpeed+Speed < 0.0f)
+	if(RedCarSpeed+Speed < RedCarMinSpeed)
 	{
-		BlueCarSpeed = 0.0f;
+		RedCarSpeed = RedCarMinSpeed;
 	}
 }
 
@@ -65,9 +65,9 @@ void UGameIns::AddBlueCarSpeed(float AddSpeed)
 		BlueCarSpeed += AddSpeed;
 	}
 	//0より小さい場合は0にする
-	if(BlueCarSpeed+AddSpeed < 0.0f)
+	if(BlueCarSpeed+AddSpeed < BlueCarMinSpeed)
 	{
-		BlueCarSpeed = 0.0f;
+		BlueCarSpeed = BlueCarMinSpeed;
 	}
 }
 
@@ -83,8 +83,8 @@ void UGameIns::AddRedCarSpeed(float AddSpeed)
 		RedCarSpeed += AddSpeed;
 	}
 	//0より小さい場合は0にする
-	if(BlueCarSpeed+AddSpeed < 0.0f)
+	if(RedCarSpeed+AddSpeed < RedCarMinSpeed)
 	{
-		BlueCarSpeed = 0.0f;
+		RedCarSpeed = RedCarMinSpeed;
 	}
 }

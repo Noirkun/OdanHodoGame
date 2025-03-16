@@ -27,7 +27,7 @@ struct FStageStruct: public FTableRowBase
 	
 	// ステージ名
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FText StageName;
+	FText StageName=FText::FromString("None");
 	
 	// ステージ用のレベル
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -47,10 +47,6 @@ public:
 	// 実際のデータ
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Data Setting")
 	TArray<FStageStruct> StageData;
-
-	/* データ取り込み用ファンクション
-	UFUNCTION(CallInEditor)
-	void LoadData();
-	*/
+	
 	int32 GetStageDataNum() const;
 };

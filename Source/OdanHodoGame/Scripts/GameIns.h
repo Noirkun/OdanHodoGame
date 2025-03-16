@@ -27,13 +27,21 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,BlueprintSetter=SetRedCarSpeed, Category = "GameIns", meta = (ClampMin = "0.0", ClampMax = "2000.0"))
 	float RedCarSpeed = 100.0f;
 
-	// 青い車のマックススピード
+	// 青い車のMaxスピード
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GameIns")
 	float BlueCarMaxSpeed = 2000.0f;
 
-	// 赤い車のマックススピード
+	// 赤い車のMaxスピード
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GameIns")
 	float RedCarMaxSpeed = 2000.0f;
+
+	// 青い車のMinスピード
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GameIns")
+	float BlueCarMinSpeed = 500.0f;
+
+	// 赤い車のMinスピード
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GameIns")
+	float RedCarMinSpeed = 500.0f;
 	
 	//青の車の速度をセットする関数
 	UFUNCTION(BlueprintCallable, Category = "GameIns")

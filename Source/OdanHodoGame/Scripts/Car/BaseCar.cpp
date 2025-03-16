@@ -69,10 +69,10 @@ void ABaseCar::Init(ECarColor _CarColor,TObjectPtr<class USplineComponent> _Spli
 void ABaseCar::OnCarHitEvent(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
+	//生成された車がぶつかっていない場合
 	if(!bHit)
 	{
 		TObjectPtr<AInGameGameMode> GameMode = Cast<AInGameGameMode>(UGameplayStatics::GetGameMode((this)));
-		UE_LOG(LogTemp,Warning,TEXT("Hit::OllHit"));
 		if(GameMode==nullptr)
 		{
 			return;
@@ -80,9 +80,9 @@ void ABaseCar::OnCarHitEvent(UPrimitiveComponent* HitComponent, AActor* OtherAct
 		//車が当たった時の処理を呼び出し
 		if(OtherActor->ActorHasTag("Car"))
 		{
+			//bHitをtrueに設定しこれ以降生成された車がぶつかっても処理を行わないようにする
 			bHit=true;
 			GameMode->HitCarEvent.Broadcast();
-			UE_LOG(LogTemp,Warning,TEXT("Hit::Hit"));
 		}
 	}
 }
@@ -132,8 +132,10 @@ void ABaseCar::SetCurrentDistance(ECarColor _CarColor, float _DeltaTime)
 	}
 
 	//スプラインの位置と回転を取得し、車の位置をその場所に指定する
-	CarMesh->SetWorldLocation(SplineComponent->GetLocationAtDistanceAlongSpline(CurrentDistance,ESplineCoordinateSpace::World),false,nullptr,ETeleportType::TeleportPhysics);
-	CarMesh->SetWorldRotation(SplineComponent->GetRotationAtDistanceAlongSpline(CurrentDistance,ESplineCoordinateSpace::World),false,nullptr,ETeleportType::TeleportPhysics);
+	CarMesh->SetWorldLocation(SplineComponent->GetLocationAtDistanceAlongSpline(CurrentDistance,ESplineCoordinateSpace::World),
+		false,nullptr,ETeleportType::TeleportPhysics);
+	CarMesh->SetWorldRotation(SplineComponent->GetRotationAtDistanceAlongSpline(CurrentDistance,ESplineCoordinateSpace::World),
+		false,nullptr,ETeleportType::TeleportPhysics);
 	//スプラインの長さを超えたら車を削除する
 	if(SplineComponent->GetSplineLength()<=CurrentDistance)
 	{
